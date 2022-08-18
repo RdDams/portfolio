@@ -1,6 +1,6 @@
 # Portfolio
 
-![Coverage Badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/RdDams/97552275aeef10e4d41fba19f817eae4/raw/portfolio_dev.json) [![HitCount](https://hits.dwyl.com/RdDams/portfolio.svg?style=flat-square)](http://hits.dwyl.com/RdDams/portfolio) ![GitHub CI](https://github.com/dwyl/auth_plug/actions/workflows/ci.yml/badge.svg)
+![Coverage Badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/RdDams/97552275aeef10e4d41fba19f817eae4/raw/portfolio_heads_main.json) [![HitCount](https://hits.dwyl.com/RdDams/portfolio.svg?style=flat-square)](http://hits.dwyl.com/RdDams/portfolio) ![GitHub CI](https://github.com/dwyl/auth_plug/actions/workflows/ci.yml/badge.svg)
 
 ### My personal portfolio
 
