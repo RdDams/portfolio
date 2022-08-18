@@ -24,13 +24,15 @@ module.exports = function (config) {
     jasmineHtmlReporter: {
       suppressAll: true, // removes the duplicated traces
     },
-    preprocessors: {
-      "src/app/**/*.js": ["coverage"],
-    },
-    reporters: ["progress", "coverage"],
     coverageReporter: {
-      type: "lcov",
-      dir: "coverage/",
+      dir: require("path").join(__dirname, "./coverage/portfolio"),
+      subdir: ".",
+      reporters: [
+        "progress",
+        "coverage",
+        { type: "html" },
+        { type: "text-summary" },
+      ],
     },
     customLaunchers: {
       ChromeHeadless: {

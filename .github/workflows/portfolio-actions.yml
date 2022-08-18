@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - dev
     paths-ignore:
       - "**.md"
 jobs:
@@ -27,4 +28,25 @@ jobs:
           node-version: 16.x
           cache: npm
       - run: npm ci
-      - run: npm run ci:test
+      - run: npm run ci:test > test.txt
+      - name: Get Coverage for badge
+        run: |
+          SUMMARY="$(cat test.txt | tail -5 | head -1)"
+          TOKENS=($SUMMARY)
+          echo "COVERAGE=$(echo ${TOKENS[2]})" >> $GITHUB_ENV
+          REF=${{ github.ref }}
+          echo "github.ref: $REF"
+          IFS='/' read -ra PATHS <<< "$REF"
+          BRANCH_NAME="${PATHS[1]}_${PATHS[2]}"
+          echo $BRANCH_NAME
+          echo "BRANCH=$(echo ${BRANCH_NAME})" >> $GITHUB_ENV
+      - name: Create the Badge
+        uses: schneegans/dynamic-badges-action@v1.0.0
+        with:
+          auth: ${{ secrets.GIST_SECRET }}
+          gistID: 97552275aeef10e4d41fba19f817eae4
+          filename: portfolio_${{ env.BRANCH }}.json
+          label: Coverage
+          message: ${{ env.COVERAGE }}
+          color: green
+          namedLogo: jest

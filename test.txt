@@ -1,0 +1,21 @@
+
+> portfolio@0.0.0 ci:test
+> ng test --browsers ChromeHeadless --watch=false --code-coverage
+
+18 08 2022 12:59:57.408:INFO [karma-server]: Karma v6.4.0 server started at http://localhost:9876/
+18 08 2022 12:59:57.411:INFO [launcher]: Launching browsers ChromeHeadless with concurrency unlimited
+18 08 2022 12:59:57.423:INFO [launcher]: Starting browser Chrome
+18 08 2022 12:59:57.919:INFO [Chrome Headless 104.0.5112.81 (Windows 10)]: Connected on socket 0qkmyAU0qFLLYE3kAAAB with id 54464453
+Chrome Headless 104.0.5112.81 (Windows 10): Executed 0 of 3[32m SUCCESS[39m (0 secs / 0 secs)
+[1A[2KChrome Headless 104.0.5112.81 (Windows 10): Executed 1 of 3[32m SUCCESS[39m (0 secs / 0.065 secs)
+[1A[2KChrome Headless 104.0.5112.81 (Windows 10): Executed 2 of 3[32m SUCCESS[39m (0 secs / 0.073 secs)
+[1A[2KChrome Headless 104.0.5112.81 (Windows 10): Executed 3 of 3[32m SUCCESS[39m (0 secs / 0.078 secs)
+[1A[2KChrome Headless 104.0.5112.81 (Windows 10): Executed 3 of 3[32m SUCCESS[39m (0.084 secs / 0.078 secs)
+[32mTOTAL: 3 SUCCESS[39m
+
+=============================== Coverage summary ===============================
+Statements   : 100% ( 3/3 )
+Branches     : 100% ( 0/0 )
+Functions    : 100% ( 0/0 )
+Lines        : 100% ( 2/2 )
+================================================================================
