@@ -1,4 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Titillium Web", "Helvetica Neue", sans-serif;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("./assets/background.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: white;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@import "~@angular/material/theming";
+$custom-typography: mat-typography-config(
+  $font-family: "Titillium Web",
+);
+@include mat-core($custom-typography);
