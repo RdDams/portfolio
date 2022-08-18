@@ -1,5 +1,7 @@
 # Portfolio
 
+![GitHub CI](https://github.com/dwyl/auth_plug/actions/workflows/ci.yml/badge.svg)
+
 ### My personal portfolio
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.3.

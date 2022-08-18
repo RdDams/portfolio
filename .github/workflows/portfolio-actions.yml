@@ -1,4 +1,4 @@
-name: Test portfolio
+name: Portfolio
 on:
   push:
     branches:
@@ -6,7 +6,7 @@ on:
     paths-ignore:
       - "**.md"
 jobs:
-  Explore-GitHub-Actions:
+  Build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -15,7 +15,16 @@ jobs:
         with:
           node-version: 16.x
           cache: npm
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: npm ci
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - run: npm run build:ssr
+  Unit-Tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: npm
+      - run: npm ci
       - run: npm run ci:test
