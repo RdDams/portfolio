@@ -3,18 +3,32 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "ng serve",
+      "name": "Run app",
       "type": "pwa-chrome",
       "request": "launch",
-      "preLaunchTask": "npm: start",
+      "preLaunchTask": "npm: dev:ssr",
       "url": "http://localhost:4200/"
     },
     {
-      "name": "ng test",
+      "name": "Test",
       "type": "chrome",
       "request": "launch",
       "preLaunchTask": "npm: test",
       "url": "http://localhost:9876/debug.html"
+    },
+    {
+      "name": "Build app",
+      "type": "node",
+      "request": "launch",
+      "preLaunchTask": "npm: build:ssr",
+      "url": "http://localhost:4200/"
+    },
+    {
+      "name": "Run build app",
+      "type": "pwa-chrome",
+      "request": "launch",
+      "preLaunchTask": "npm: serve:ssr",
+      "url": "http://localhost:4200/"
     }
   ]
 }
