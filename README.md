@@ -1,6 +1,6 @@
 # Portfolio
 
-![GitHub CI](https://github.com/dwyl/auth_plug/actions/workflows/ci.yml/badge.svg)
+[![HitCount](https://hits.dwyl.com/RdDams/portfolio.svg?style=flat-square)](http://hits.dwyl.com/RdDams/portfolio)![GitHub CI](https://github.com/dwyl/auth_plug/actions/workflows/ci.yml/badge.svg)
 
 ### My personal portfolio
 
