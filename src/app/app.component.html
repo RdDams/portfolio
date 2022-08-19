@@ -1,35 +1,40 @@
-<mat-toolbar>
-  <button mat-button routerLink="/presentation" routerLinkActive="is-active">
-    Présentation
-  </button>
-  <button mat-button routerLink="/path" routerLinkActive="is-active">
-    Parcours
-  </button>
-  <button mat-button routerLink="/skills" routerLinkActive="is-active">
-    Compétences
-  </button>
-  <button mat-button routerLink="/projects" routerLinkActive="is-active">
-    Projets
-  </button>
-  <span class="spacer"></span>
-  <button mat-button routerLink="/contact" routerLinkActive="is-active">
-    Contact
-  </button>
-  <a
-    mat-icon-button
-    aria-label="icon-button with linkedin icon"
-    href="https://www.linkedin.com/in/damien-remaud-0a12b4a5/"
-    target="_blank"
-  >
-    <mat-icon svgIcon="linkedin"></mat-icon>
-  </a>
-  <a
-    mat-icon-button
-    aria-label="icon-button with github icon"
-    href="https://github.com/RdDams"
-    target="_blank"
-  >
-    <mat-icon svgIcon="github"></mat-icon>
-  </a>
-</mat-toolbar>
-<router-outlet></router-outlet>
+<div class="global-container" [@backgroundAnimation]="getRouteAnimationData()">
+  <mat-toolbar>
+    <button mat-button routerLink="/presentation" routerLinkActive="is-active">
+      Présentation
+    </button>
+    <button mat-button routerLink="/path" routerLinkActive="is-active">
+      Parcours
+    </button>
+    <button mat-button routerLink="/skills" routerLinkActive="is-active">
+      Compétences
+    </button>
+    <button mat-button routerLink="/projects" routerLinkActive="is-active">
+      Projets
+    </button>
+    <span class="spacer"></span>
+    <button mat-button routerLink="/contact" routerLinkActive="is-active">
+      Contact
+    </button>
+    <a
+      mat-icon-button
+      aria-label="icon-button with linkedin icon"
+      href="https://www.linkedin.com/in/damien-remaud-0a12b4a5/"
+      target="_blank"
+    >
+      <mat-icon svgIcon="linkedin"></mat-icon>
+    </a>
+    <a
+      mat-icon-button
+      aria-label="icon-button with github icon"
+      href="https://github.com/RdDams"
+      target="_blank"
+    >
+      <mat-icon svgIcon="github"></mat-icon>
+    </a>
+  </mat-toolbar>
+
+  <div class="page-container" [@pageAnimation]="getRouteAnimationData()">
+    <router-outlet></router-outlet>
+  </div>
+</div>

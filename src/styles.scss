@@ -1,17 +1,13 @@
 html,
 body {
   height: 100%;
-}
-body {
+  width: 100%;
   margin: 0;
   font-family: "Titillium Web", "Helvetica Neue", sans-serif;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("./assets/background.jpg");
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  color: white;
+}
+
+.page-container {
+  margin: 5vw 3vh;
 }
 
 @import "~@angular/material/theming";
