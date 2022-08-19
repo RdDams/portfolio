@@ -1,4 +1,9 @@
-import { Component, Inject } from '@angular/core';
+import {
+  AfterViewChecked,
+  Component,
+  HostListener,
+  Inject,
+} from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { PLATFORM_ID } from '@angular/core';
@@ -13,14 +18,14 @@ import {
   group,
   animateChild,
 } from '@angular/animations';
+import { isPlatformBrowser } from '@angular/common';
+import { WindowRef } from './services/windowRef.service';
 
-const ratio = window.innerHeight / 600;
-const backgroundXSize = Math.round(1648 * ratio);
 const slideToRight = [
   group([
     animate(
       '800ms ease-out',
-      style({ 'background-position': `-${backgroundXSize}px 0%` })
+      style({ 'background-position': `-{{backgroundXSize}}px 0%` })
     ),
     query('@pageAnimation', animateChild()),
   ]),
@@ -29,7 +34,7 @@ const slideToLeft = [
   group([
     animate(
       '800ms ease-out',
-      style({ 'background-position': `${backgroundXSize}px 0%` })
+      style({ 'background-position': `{{backgroundXSize}}px 0%` })
     ),
     query('@pageAnimation', animateChild()),
   ]),
@@ -84,29 +89,69 @@ const slidePageToLeft = [
 ];
 
 const backgroundAnimation = trigger('backgroundAnimation', [
-  transition('PresentationPage => PathPage', slideToRight),
-  transition('PresentationPage => SkillsPage', slideToRight),
-  transition('PresentationPage => ProjectsPage', slideToRight),
-  transition('PresentationPage => ContactPage', slideToRight),
-  transition('PathPage => PresentationPage', slideToLeft),
-  transition('SkillsPage => PresentationPage', slideToLeft),
-  transition('ProjectsPage => PresentationPage', slideToLeft),
-  transition('ContactPage => PresentationPage', slideToLeft),
+  transition('PresentationPage => PathPage', slideToRight, {
+    params: { backgroundXSize: 0 },
+  }),
+  transition('PresentationPage => SkillsPage', slideToRight, {
+    params: { backgroundXSize: 0 },
+  }),
+  transition('PresentationPage => ProjectsPage', slideToRight, {
+    params: { backgroundXSize: 0 },
+  }),
+  transition('PresentationPage => ContactPage', slideToRight, {
+    params: { backgroundXSize: 0 },
+  }),
+  transition('PathPage => PresentationPage', slideToLeft, {
+    params: { backgroundXSize: 0 },
+  }),
+  transition('SkillsPage => PresentationPage', slideToLeft, {
+    params: { backgroundXSize: 0 },
+  }),
+  transition('ProjectsPage => PresentationPage', slideToLeft, {
+    params: { backgroundXSize: 0 },
+  }),
+  transition('ContactPage => PresentationPage', slideToLeft, {
+    params: { backgroundXSize: 0 },
+  }),
 
-  transition('PathPage => SkillsPage', slideToRight),
-  transition('PathPage => ProjectsPage', slideToRight),
-  transition('PathPage => ContactPage', slideToRight),
-  transition('SkillsPage => PathPage', slideToLeft),
-  transition('ProjectsPage => PathPage', slideToLeft),
-  transition('ContactPage => PathPage', slideToLeft),
+  transition('PathPage => SkillsPage', slideToRight, {
+    params: { backgroundXSize: 0 },
+  }),
+  transition('PathPage => ProjectsPage', slideToRight, {
+    params: { backgroundXSize: 0 },
+  }),
+  transition('PathPage => ContactPage', slideToRight, {
+    params: { backgroundXSize: 0 },
+  }),
+  transition('SkillsPage => PathPage', slideToLeft, {
+    params: { backgroundXSize: 0 },
+  }),
+  transition('ProjectsPage => PathPage', slideToLeft, {
+    params: { backgroundXSize: 0 },
+  }),
+  transition('ContactPage => PathPage', slideToLeft, {
+    params: { backgroundXSize: 0 },
+  }),
 
-  transition('SkillsPage => ProjectsPage', slideToRight),
-  transition('SkillsPage => ContactPage', slideToRight),
-  transition('ProjectsPage => SkillsPage', slideToLeft),
-  transition('ContactPage => SkillsPage', slideToLeft),
+  transition('SkillsPage => ProjectsPage', slideToRight, {
+    params: { backgroundXSize: 0 },
+  }),
+  transition('SkillsPage => ContactPage', slideToRight, {
+    params: { backgroundXSize: 0 },
+  }),
+  transition('ProjectsPage => SkillsPage', slideToLeft, {
+    params: { backgroundXSize: 0 },
+  }),
+  transition('ContactPage => SkillsPage', slideToLeft, {
+    params: { backgroundXSize: 0 },
+  }),
 
-  transition('ProjectsPage => ContactPage', slideToRight),
-  transition('ContactPage => ProjectsPage', slideToLeft),
+  transition('ProjectsPage => ContactPage', slideToRight, {
+    params: { backgroundXSize: 0 },
+  }),
+  transition('ContactPage => ProjectsPage', slideToLeft, {
+    params: { backgroundXSize: 0 },
+  }),
 ]);
 const pageAnimation = trigger('pageAnimation', [
   transition('PresentationPage => PathPage', slidePageToRight),
@@ -141,12 +186,24 @@ const pageAnimation = trigger('pageAnimation', [
   animations: [backgroundAnimation, pageAnimation],
 })
 export class AppComponent {
+  private backgroundXSize: number | undefined;
+
+  @HostListener('window:resize')
+  getScreenSize() {
+    const ratio = this.windowRef.nativeWindow.innerHeight / 600;
+    this.backgroundXSize = Math.round(1648 * ratio);
+  }
+
   constructor(
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer,
     private contexts: ChildrenOutletContexts,
-    @Inject(PLATFORM_ID) private platformId: string
+    @Inject(PLATFORM_ID) private platformId: string,
+    private windowRef: WindowRef
   ) {
+    if (isPlatformBrowser(this.platformId)) {
+      this.getScreenSize();
+    }
     const domain = isPlatformServer(this.platformId)
       ? 'http://localhost:4200/'
       : '';
@@ -165,8 +222,14 @@ export class AppComponent {
   }
 
   getRouteAnimationData() {
-    return this.contexts.getContext('primary')?.route?.snapshot?.data?.[
-      'animation'
-    ];
+    return {
+      value:
+        this.contexts.getContext('primary')?.route?.snapshot?.data?.[
+          'animation'
+        ],
+      params: {
+        backgroundXSize: this.backgroundXSize,
+      },
+    };
   }
 }

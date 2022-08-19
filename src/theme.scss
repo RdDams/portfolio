@@ -1,0 +1,45 @@
+@use "@angular/material" as mat;
+@include mat.core();
+
+$purple-palette: (
+  50: #f4e5ff,
+  100: #e1bdfe,
+  200: #cd91ff,
+  300: #b761ff,
+  400: #a538ff,
+  500: #9300fd,
+  600: #7d00f7,
+  700: #5b05f0,
+  800: #300bec,
+  900: #0017de,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.8),
+    200: rgba(black, 0.7),
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+  ),
+);
+
+$primary: mat.define-palette($purple-palette, 400);
+// primary, accent, warn
+$theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $primary,
+      accent: $primary,
+    ),
+  )
+);
+
+$custom-typography: mat.define-typography-config(
+  $font-family: "Titillium Web",
+);
+
+@include mat.core($custom-typography);
+@include mat.button-theme($theme);

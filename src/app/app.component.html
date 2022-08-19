@@ -1,21 +1,26 @@
 <div class="global-container" [@backgroundAnimation]="getRouteAnimationData()">
   <mat-toolbar>
-    <button mat-button routerLink="/presentation" routerLinkActive="is-active">
+    <button
+      mat-button
+      routerLink="/presentation"
+      routerLinkActive="mat-primary"
+    >
       Présentation
     </button>
-    <button mat-button routerLink="/path" routerLinkActive="is-active">
+    <button mat-button routerLink="/path" routerLinkActive="mat-primary">
       Parcours
     </button>
-    <button mat-button routerLink="/skills" routerLinkActive="is-active">
+    <button mat-button routerLink="/skills" routerLinkActive="mat-primary">
       Compétences
     </button>
-    <button mat-button routerLink="/projects" routerLinkActive="is-active">
+    <button mat-button routerLink="/projects" routerLinkActive="mat-primary">
       Projets
     </button>
     <span class="spacer"></span>
-    <button mat-button routerLink="/contact" routerLinkActive="is-active">
+    <button mat-button routerLink="/contact" routerLinkActive="mat-primary">
       Contact
     </button>
+    <a mat-stroked-button color="primary"> Curriculum </a>
     <a
       mat-icon-button
       aria-label="icon-button with linkedin icon"

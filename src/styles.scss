@@ -9,9 +9,3 @@ body {
 .page-container {
   margin: 5vw 3vh;
 }
-
-@import "~@angular/material/theming";
-$custom-typography: mat-typography-config(
-  $font-family: "Titillium Web",
-);
-@include mat-core($custom-typography);
